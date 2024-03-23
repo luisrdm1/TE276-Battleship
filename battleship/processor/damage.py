@@ -53,16 +53,11 @@ def get_damage(
     :param hazard_position: current position of this hazard
     :param hazard: metadata of this hazard
     """
+    dist: float = get_distance(ship_position, hazard_position)
 
-    # Compute distance from ship to hazard
-    # <!!! INSERT YOUR CODE HERE !!!>
+    safe: bool = dist > hazard.safe_dist
 
-    # Check if ship is safe from hazard
-    # <!!! INSERT YOUR CODE HERE !!!>
-
-    # Compute the actual damage
-    # <!!! INSERT YOUR CODE HERE !!!>
-
-    # Return the damage you computed
-    # <!!! REPLACE THE LINE BELLOW WITH YOUR OWN !!!>
-    return 0
+    if safe:
+        return 0
+    else:
+        return (hazard.safe_dist - dist)/hazard.safe_dist
